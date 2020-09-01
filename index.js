@@ -49,3 +49,7 @@ function allWagesFor(obj) {
     return e.date
   })
 }
+
+
+
+
