@@ -50,6 +50,34 @@ function allWagesFor(obj) {
   })
 }
 
+function allWagesFor(obj){
+    let eligibleDates = obj.timeInEvents.map(function(e){
+        return e.date
+    })
 
+    let payable = eligibleDates.reduce(function(memo, d){
+        return memo + wagesEarnedOnDate(obj, d)
+    }, 0)
+
+    return payable
+}
+
+
+function createEmployeeRecords(arryOfArrays) {
+    let theArray = []
+    arryOfArrays.forEach(element => {
+        theArray.push(createEmployeeRecord(element))
+    });
+    return theArray
+}
+
+function findEmployeebyFirstName(srcArray, firstName){
+    return srcArray.find(x => {return x.firstName === firstName})
+}
+
+function calculatePayroll(array){
+    let sum = array.map((e) => allWagesFor(e))
+    return sum.reduce((num, sum) => num + sum)
+}
 
 
